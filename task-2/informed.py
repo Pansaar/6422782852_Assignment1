@@ -100,3 +100,5 @@ def a_star_tree_search(problem, h):
                     h_value = h(succ)
                     f_value = child_cost + h_value
                     heappush(frontier, (f_value, child))
+
+

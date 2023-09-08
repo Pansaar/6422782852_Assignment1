@@ -49,6 +49,25 @@ def h1(s):
     return res
 
 def h3(s):
-    # implement this function
     board, _, _ = s
-    return 0
+    goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
+    h_value = 0
+
+    for i in range(9):
+        if board[i] != 0:
+            # Calculate the target row and column for the current tile
+            target_row = board[i] // 3
+            target_col = board[i] % 3
+
+            # Calculate the absolute difference between the current position
+            # and the target position (row and column differences)
+            row_diff = abs(i // 3 - target_row)
+            col_diff = abs(i % 3 - target_col)
+
+            # Add the row and column differences to the heuristic value
+            h_value += row_diff + col_diff
+
+    return h_value
+
+
+
