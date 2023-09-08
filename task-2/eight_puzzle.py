@@ -1,6 +1,3 @@
-import copy
-
-
 def initial_state():
     return ((7, 2, 4, 5, 0, 6, 8, 3, 1), 1, 1)
 
@@ -40,9 +37,7 @@ def h1(s):
     goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
     board, _, _ = s
     res = 0
-    # The for loop counts the number of elements that is different from
-    # the goal configuration.
-    # We start from index 1 to 8 because the blank is excluded.
+
     for idx in range(1, 9):
         if goal[idx] != board[idx]:
             res += 1
@@ -55,16 +50,12 @@ def h3(s):
 
     for i in range(9):
         if board[i] != 0:
-            # Calculate the target row and column for the current tile
+
             target_row = board[i] // 3
             target_col = board[i] % 3
 
-            # Calculate the absolute difference between the current position
-            # and the target position (row and column differences)
             row_diff = abs(i // 3 - target_row)
             col_diff = abs(i % 3 - target_col)
-
-            # Add the row and column differences to the heuristic value
             h_value += row_diff + col_diff
 
     return h_value
