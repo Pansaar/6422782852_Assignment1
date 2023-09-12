@@ -1,12 +1,11 @@
 from collections import deque
 
-# A node = a tuple of 3 members
+
 def create_node(state, parent, action, path_cost, depth):
     return (state, parent, action, path_cost, depth)
-# Trace back from a goal node, n, to the initial node
-# to generate a solution
+
 def print_solution(n):
-    r = deque()  # double-ended queue
+    r = deque()
     while n is not None:
         r.appendleft(n[0])
         n = n[1]

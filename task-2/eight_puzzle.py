@@ -46,19 +46,18 @@ def h1(s):
 def h3(s):
     board, _, _ = s
     goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
-    h_value = 0
+    board, _, _ = s
+    res = 0
 
-    for i in range(9):
-        if board[i] != 0:
+    for idx in range(9):
+        if board[idx] not in goal[(idx//3)*3:(idx//3)*3+3]:
+            res += 1
 
-            target_row = board[i] // 3
-            target_col = board[i] % 3
+    for idx in range(9):
+        if board[idx] not in (goal[idx%3], goal[idx%3+3], goal[idx%3+6]):
+            res += 1
 
-            row_diff = abs(i // 3 - target_row)
-            col_diff = abs(i % 3 - target_col)
-            h_value += row_diff + col_diff
-
-    return h_value
+        return res
 
 
 
